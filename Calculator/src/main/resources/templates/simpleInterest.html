@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Interest</title>
+  <base href="/">
+  <link rel="stylesheet"  type="text/css" href="css/styles.css">
+  </base>
+</head>
+<body>
+<div class="topnav">
+  <a th:href="@{/}">Home</a>
+  <a th:href="@{/simple}">Simple</a>
+  <a th:href="@{/advanced}">Advanced</a>
+  <a class="active" th:href="@{/simpleInterest}">Simple Interest</a>
+  <a th:href="@{/compoundInterest}">Compound Interest</a>
+</div>
+
+<h1>Simple Interest</h1>
+
+<div class="calc">
+  <form  th:action="@{/simpleInterest}" th:object="${calculatorModel}" method="POST">
+
+    <label for="investment">Investment</label>
+    <input type="text" id="investment" name="investment" th:field="*{p}">
+
+    <label for="rate">Interest rate</label>
+    <input type="text" id="rate" name="rate" th:field="*{r}">
+
+    <label for="years">Years</label>
+    <input type="text" id="years" name="years" th:field="*{t}">
+
+
+
+    <input type="submit" value="Calculate">
+
+    <h2><p th:text="'Total balance: ' + ${totalBalance}"/></h2>
+    <h2><p th:text="'Accrued Interest: ' + ${accruedInterest}"/></h2>
+
+  </form>
+</div>
+</body>
+</html>

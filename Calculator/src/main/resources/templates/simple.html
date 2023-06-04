@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple</title>
+    <base href="/">
+    <link rel="stylesheet"  type="text/css" href="css/styles.css">
+    </base>
+</head>
+<body>
+
+<div class="topnav">
+    <a th:href="@{/}">Home</a>
+    <a class="active" th:href="@{/simple}">Simple</a>
+    <a th:href="@{/advanced}">Advanced</a>
+    <a th:href="@{/simpleInterest}">Simple Interest</a>
+    <a th:href="@{/compoundInterest}">Compound Interest</a>
+</div>
+
+<h1>Simple</h1>
+
+<div class="calc">
+<form  th:action="@{/simple}" th:object="${calculatorModel}" method="POST">
+    <input type="text" th:field="*{a}"/>
+    <input type="text" th:field="*{b}"/>
+    <p>
+        <input type="submit" class="button" name="add" value="+"/>
+        <input type="submit" class="button" name="subtract" value="-"/>
+        <input type="submit" class="button" name="multiply" value="*"/>
+        <input type="submit" class="button" name="divide" value="/"/>
+        <input type="submit" class="button" name="clearSimple" value="C"/>
+    </p>
+
+    <h2><p th:text="'Result: ' + ${result}"/></h2>
+
+</form>
+</div>
+</body>
+</html>

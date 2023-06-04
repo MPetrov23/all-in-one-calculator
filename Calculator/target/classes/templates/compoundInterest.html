@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Compound Interest</title>
+    <base href="/">
+    <link rel="stylesheet"  type="text/css" href="css/styles.css">
+    </base>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/simple}">Simple</a>
+    <a th:href="@{/advanced}">Advanced</a>
+    <a th:href="@{/simpleInterest}">Simple Interest</a>
+    <a class="active" th:href="@{/compoundInterest}">Compound Interest</a>
+</div>
+
+<h1>Compound interest</h1>
+
+<div class="calc">
+<form  th:action="@{/compoundInterest}" th:object="${calculatorModel}" method="POST">
+
+    <label for="investment">Initial Investment</label>
+    <input type="text" id="investment" name="investment" th:field="*{p}">
+
+    <label for="rate">Interest rate</label>
+    <input type="text" id="rate" name="rate" th:field="*{r}">
+
+    <label for="years">Years</label>
+    <input type="text" id="years" name="years" th:field="*{t}">
+
+    <label for="deposit">Yearly deposit (optional)</label>
+    <input type="text" id="deposit" name="deposit" th:field="*{d}">
+
+    <label for="number">Times interest is compounded per year</label>
+    <input type="text" id="number" name="number" th:field="*{n}">
+
+    <input type="submit" value="Calculate">
+
+    <h2><p th:text="'Total balance: ' + ${totalBalance}"/></h2>
+    <h2><p th:text="'Total deposit: ' + ${totalDeposit}"/></h2>
+    <h2><p th:text="'Accrued Interest: ' + ${accruedInterest}"/></h2>
+
+</form>
+</div>
+</body>
+</html>
