@@ -10,15 +10,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CalculatorModel {
-    private String operation;
-    private int a;
-    private int b;
-    private int c;
-    private double p;
-    private double r;
-    private int t;
-    private double n;
-    private double d;
+
+    private float a;
+    private float b;
+    private float c;
+
+    //initial investment
+    private float p;
+    //interest rate
+    private float r;
+    //time
+    private float t;
+    //compound per year
+    private float n;
+    //deposit
+    private float d;
 
 
 }

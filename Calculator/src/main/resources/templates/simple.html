@@ -8,30 +8,36 @@
     </base>
 </head>
 <body>
-
+<div class="calc">
 <div class="topnav">
     <a th:href="@{/}">Home</a>
     <a class="active" th:href="@{/simple}">Simple</a>
     <a th:href="@{/advanced}">Advanced</a>
     <a th:href="@{/simpleInterest}">Simple Interest</a>
     <a th:href="@{/compoundInterest}">Compound Interest</a>
+    <a th:href="@{/quadraticEquation}">Quadratic Equation</a>
 </div>
+
 
 <h1>Simple</h1>
 
-<div class="calc">
+
 <form  th:action="@{/simple}" th:object="${calculatorModel}" method="POST">
-    <input type="text" th:field="*{a}"/>
-    <input type="text" th:field="*{b}"/>
+    <table>
+        <th><input type="text" th:field="*{a}"/></th>
+        <th></th>
+        <th><input type="text" th:field="*{b}"/></th>
+        <th></th>
+    </table>
     <p>
         <input type="submit" class="button" name="add" value="+"/>
         <input type="submit" class="button" name="subtract" value="-"/>
         <input type="submit" class="button" name="multiply" value="*"/>
         <input type="submit" class="button" name="divide" value="/"/>
-        <input type="submit" class="button" name="clearSimple" value="C"/>
+        <input type="submit" class="button" name="clearSimple" value="Clear"/>
     </p>
 
-    <h2><p th:text="'Result: ' + ${result}"/></h2>
+    <h2><p th:text="${result}"/></h2>
 
 </form>
 </div>

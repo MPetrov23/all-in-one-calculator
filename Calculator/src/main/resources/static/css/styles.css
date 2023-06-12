@@ -3,11 +3,14 @@ body {
   margin-left:20%;
   margin-right:20%;
   font-family: Arial, Helvetica, sans-serif;
-  background:#acbdff;
+  background:#98ff90;
 }
 
 h1{
   text-align: center;
+}
+h2{
+  text-decoration: underline;
 }
 
 .menu{
@@ -29,11 +32,13 @@ h1{
 
 .menu a:hover, a:active {
   background-color: #4541ea;
-
 }
 
 .calc{
-margin-left:10%;
+padding:5%;
+padding-top:0;
+border-radius: 12px;
+background:#7c7c7c;
 }
 
 .topnav {
@@ -59,5 +64,44 @@ position: relative;
 
 .topnav a.active {
   background-color: #060f6f;
+  color: white;
+}
+
+table {
+  text-align:left;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+.button {
+   background-color: white;
+   color: black;
+   border: 2px solid #555555;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+
+.button:hover {
+  background-color: #555555;
   color: white;
 }

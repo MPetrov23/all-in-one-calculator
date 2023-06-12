@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Interest</title>
+  <base href="/">
+  <link rel="stylesheet"  type="text/css" href="css/styles.css">
+  </base>
+</head>
+<body>
+<div class="calc">
+
+  <div class="topnav">
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/simple}">Simple</a>
+    <a th:href="@{/advanced}">Advanced</a>
+    <a th:href="@{/simpleInterest}">Simple Interest</a>
+    <a th:href="@{/compoundInterest}">Compound Interest</a>
+    <a class="active" th:href="@{/quadraticEquation}">Quadratic Equation</a>
+  </div>
+
+  <h1>Quadratic Equation</h1>
+
+  <h1> Enter A,B and C if Ax2+Bx+C=0</h1>
+
+
+  <form  th:action="@{/quadraticEquation}" th:object="${calculatorModel}" method="POST">
+    <table>
+      <tr>
+        <th><label for="a">A- </label></th>
+        <th><input type="text" id="a" name="a" th:field="*{a}"></th>
+      </tr>
+      <tr>
+        <th> <label for="b">B- </label></th>
+        <th><input type="text" id="b" name="b" th:field="*{b}"></th>
+      </tr>
+      <tr>
+        <th><label for="c">C- </label></th>
+        <th><input type="text" id="c" name="c" th:field="*{c}"></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>
+          <input type="submit" class="button" value="Calculate">
+          <input type="submit" class="button" name="clearQuadraticEquation" value="Clear"/>
+        </th>
+      </tr>
+    </table>
+    <h2><p th:text="${message}"/></h2>
+    <h2><p th:text="${D}"/></h2>
+    <h2><p th:text="${x1}"/></h2>
+    <h2><p th:text="${x2}"/></h2>
+
+  </form>
+</div>
+</body>
+</html>

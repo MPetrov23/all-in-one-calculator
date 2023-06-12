@@ -7,30 +7,33 @@
     <link rel="stylesheet"  type="text/css" href="css/styles.css">
     </base></head>
 <body>
-
+<div class="calc">
 <div class="topnav">
     <a th:href="@{/}">Home</a>
     <a th:href="@{/simple}">Simple</a>
     <a class="active" th:href="@{/advanced}">Advanced</a>
     <a th:href="@{/simpleInterest}">Simple Interest</a>
-    <a th:href="@{/compoundInterest}">CompoundInterest</a>
+    <a th:href="@{/compoundInterest}">Compound Interest</a>
+    <a th:href="@{/quadraticEquation}">Quadratic Equation</a>
 </div>
 
 <h1>Advanced</h1>
 
-<div class="calc">
-<form  th:action="@{/advanced}" th:object="${calculatorModel}" method="POST">
 
-<input type="text" th:field="*{c}"/>
+<form  th:action="@{/advanced}" th:object="${calculatorModel}" method="POST">
+<table>
+    <th><input type="text" th:field="*{c}"/></th>
+    <th></th>
+</table>
 <p>
     <input type="submit" class="button" name="fibonacci" value="fib"/>
     <input type="submit" class="button" name="factorial" value="!"/>
     <input type="submit" class="button" name="sqrt" value=&#8730 />
     <input type="submit" class="button" name="power" value="^"/>
-    <input type="submit" class="button" name="clearAdvanced" value="C"/>
+    <input type="submit" class="button" name="clearAdvanced" value="Clear"/>
 </p>
 
-<h2><p th:text="'Result: ' + ${result}"/></h2>
+<h2><p th:text="${result}"/></h2>
 
 </form>
 </div>
