@@ -15,3 +15,5 @@ Advanced - Square, Power, Factorial, Number of Fibonacci
 Simple Interest - calculate Simple Interest
 
 Compound Interest - calculate Compound Interest
+
+Quadratic Equation - calculate Quadratic Equation
