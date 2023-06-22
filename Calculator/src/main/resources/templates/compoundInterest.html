@@ -24,24 +24,24 @@
 <form  th:action="@{/compoundInterest}" th:object="${calculatorModel}" method="POST">
     <table>
         <tr>
-            <th><label for="investment">Initial Investment</label></th>
-            <th><input type="text" id="investment" name="investment" th:field="*{p}"></th>
+            <th><label for="initialInvestment">Initial Investment</label></th>
+            <th><input type="text" id="initialInvestment" name="initialInvestment" th:field="*{initialInvestment}"></th>
         </tr>
         <tr>
-            <th><label for="rate">Interest rate</label></th>
-            <th><input type="text" id="rate" name="rate" th:field="*{r}"></th>
+            <th><label for="interestRate">Interest rate</label></th>
+            <th><input type="text" id="interestRate" name="interestRate" th:field="*{interestRate}"></th>
         </tr>
         <tr>
-            <th><label for="years">Years</label></th>
-            <th><input type="text" id="years" name="years" th:field="*{t}"></th>
+            <th><label for="time">Years</label></th>
+            <th><input type="text" id="time" name="time" th:field="*{time}"></th>
         </tr>
         <tr>
             <th><label for="deposit">Yearly deposit (optional)</label></th>
-            <th><input type="text" id="deposit" name="deposit" th:field="*{d}"></th>
+            <th><input type="text" id="deposit" name="deposit" th:field="*{deposit}"></th>
         </tr>
         <tr>
-            <th><label for="number">Times interest is compounded per year</label></th>
-            <th><input type="text" id="number" name="number" th:field="*{n}"></th>
+            <th><label for="compoundPerYear">Times interest is compounded per year</label></th>
+            <th><input type="text" id="compoundPerYear" name="compoundPerYear" th:field="*{compoundPerYear}"></th>
         </tr>
 
         <tr>

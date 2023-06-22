@@ -25,16 +25,16 @@
   <form  th:action="@{/simpleInterest}" th:object="${calculatorModel}" method="POST">
 <table>
     <tr>
-      <th><label for="investment">Investment</label></th>
-      <th><input type="text" id="investment" name="investment" th:field="*{p}"></th>
+      <th><label for="initialInvestment">Investment</label></th>
+      <th><input type="text" id="initialInvestment" name="initialInvestment" th:field="*{initialInvestment}"></th>
     </tr>
     <tr>
-      <th> <label for="rate">Interest rate</label></th>
-      <th><input type="text" id="rate" name="rate" th:field="*{r}"></th>
+      <th> <label for="interestRate">Interest rate</label></th>
+      <th><input type="text" id="interestRate" name="interestRate" th:field="*{interestRate}"></th>
     </tr>
     <tr>
-      <th><label for="years">Years</label></th>
-      <th><input type="text" id="years" name="years" th:field="*{t}"></th>
+      <th><label for="time">Years</label></th>
+      <th><input type="text" id="time" name="time" th:field="*{time}"></th>
     </tr>
   <tr>
     <th></th>

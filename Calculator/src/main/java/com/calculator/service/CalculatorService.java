@@ -1,11 +1,8 @@
 package com.calculator.service;
 
 import com.calculator.model.CalculatorModel;
+import com.calculator.model.ResultModel;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.LabelView;
-import java.util.HashMap;
-import java.util.Map;
 
 import static java.lang.Math.abs;
 
@@ -13,25 +10,25 @@ import static java.lang.Math.abs;
 public class CalculatorService {
 
     public float add(CalculatorModel model){
-        return model.getA() + model.getB();
+        return model.getVariableA() + model.getVariableB();
     }
 
     public float subtract(CalculatorModel model){
-        return model.getA() - model.getB();
+        return model.getVariableA() - model.getVariableB();
     }
 
     public float multiply(CalculatorModel model){
-        return model.getA() * model.getB();
+        return model.getVariableA() * model.getVariableB();
     }
 
     public float divide(CalculatorModel model){
-        if(model.getA() == 0) return 0;
-        if(model.getB() == 0) return 0;
-        return (float) model.getA() / model.getB();
+        if(model.getVariableA() == 0) return 0;
+        if(model.getVariableB() == 0) return 0;
+        return (float) model.getVariableA() / model.getVariableB();
     }
 
     public float factorial(CalculatorModel model) {
-        return  factorial(model.getC());
+        return  factorial(model.getVariableC());
     }
 
     private float factorial(float n){
@@ -39,7 +36,7 @@ public class CalculatorService {
     }
 
     public float fibonacci(CalculatorModel model){
-        return fibonacci(model.getC());
+        return fibonacci(model.getVariableC());
     }
 
     private float fibonacci(float n){
@@ -50,86 +47,82 @@ public class CalculatorService {
     }
 
     public float sqrt(CalculatorModel model){
-        return (float) Math.sqrt(model.getC());
+        return (float) Math.sqrt(model.getVariableC());
     }
 
     public float power(CalculatorModel model){
-        return model.getC() * model.getC();
+        return model.getVariableC() * model.getVariableC();
     }
 
-    public Map<String,Float> simpleInterest(CalculatorModel model){
+    public ResultModel simpleInterest(CalculatorModel model){
 
-        Map<String, Float> result = new HashMap<>();
+        float totalBalance = model.getInitialInvestment()+(model.getInitialInvestment()*model.getInterestRate()/100)*model.getTime();
+        float accruedInterest = totalBalance-model.getInitialInvestment();
 
-        result.put("totalBalance", model.getP()+(model.getP()*model.getR()/100)*model.getT());
-        result.put("accruedInterest", result.get("totalBalance")-model.getP());
+        ResultModel result = new ResultModel(totalBalance,accruedInterest);
 
         return result;
     }
 
-    public Map<String,Float> compoundInterest(CalculatorModel model){
+    public ResultModel compoundInterest(CalculatorModel model){
 
-        Map<String, Float> result = new HashMap<>();
-            float total= model.getP();
+            float totalBalance = model.getInitialInvestment();
 
-            for(int x = 1; x<=model.getT()*model.getN();x++) {
-                total=total+((total*model.getR())/100);
-                total=total+model.getD();
+            for(int x = 1; x<=model.getTime()*model.getCompoundPerYear(); x++) {
+                totalBalance=totalBalance+((totalBalance*model.getInterestRate())/100);
+                totalBalance=totalBalance+model.getDeposit();
 
             }
+            float totalDeposit = model.getInitialInvestment() + model.getDeposit()*model.getCompoundPerYear()*model.getTime();
+            float accruedInterest = totalBalance-totalDeposit;
 
-            result.put("totalBalance",total);
-            result.put("totalDeposit",   model.getP() + model.getD()*model.getN()*model.getT());
-            result.put("accruedInterest",   result.get("totalBalance")-result.get("totalDeposit"));
+            ResultModel result=new ResultModel(totalBalance,totalDeposit,accruedInterest);
 
        return result;
     }
 
-   public Map<String,String> quadraticEquation(CalculatorModel model){
-       Map<String, String> result = new HashMap<>();
+   public ResultModel quadraticEquation(CalculatorModel model){
 
-       if(model.getA()==0){
-           result.put("D", "0");
-           result.put("x1", "0");
-           result.put("x2", "0");
-           result.put("message", "A cannot be 0");
+
+       if(model.getVariableA()==0){
+
+           String message="A cannot be 0";
+           ResultModel result = new ResultModel("0","0","0",message);
 
            return result;
        }
        else {
-           double d = (model.getB() * model.getB() - 4.0 * model.getA() * model.getC());
-           double sqrtD = Math.sqrt(abs(d));
+           double discriminant = (model.getVariableB() * model.getVariableB() - 4.0 * model.getVariableA() * model.getVariableC());
+           double sqrtDiscriminant  = Math.sqrt(abs(discriminant ));
 
-           if (d > 0) {
-               double x1 = (-model.getB() + sqrtD) / (2.0 * model.getA());
-               double x2 = (-model.getB() - sqrtD) / (2.0 * model.getA());
+           if (discriminant  > 0) {
 
-               result.put("D", String.valueOf(d));
-               result.put("x1", String.valueOf(x1));
-               result.put("x2", String.valueOf(x2));
-               result.put("message", "The roots of the equation are real and different.");
+               double rootOne = (-model.getVariableB() + sqrtDiscriminant ) / (2.0 * model.getVariableA());
+               double rootTwo = (-model.getVariableB() - sqrtDiscriminant ) / (2.0 * model.getVariableA());
+               String message="The roots of the equation are real and different.";
+
+               ResultModel result = new ResultModel(String.valueOf(discriminant),String.valueOf(rootOne),String.valueOf(rootTwo),message);
 
                return result;
 
-           } else if (d == 0) {
+           } else if (discriminant  == 0) {
 
-               double x = -model.getB() / (2.0 * model.getA());
+               double root = -model.getVariableB() / (2.0 * model.getVariableA());
+               String message="The roots of the equation are real and same.";
 
-               result.put("D", String.valueOf(d));
-               result.put("x1", String.valueOf(x));
-               result.put("x2", String.valueOf(x));
-               result.put("message", "The roots of the equation are real and same. ");
+               ResultModel result = new ResultModel(String.valueOf(discriminant),String.valueOf(root),String.valueOf(root),message);
 
                return result;
 
            } else {
 
-               double x = -model.getB() / (2.0 * model.getA());
+               double root = -model.getVariableB() / (2.0 * model.getVariableA());
 
-               result.put("D", String.valueOf(d));
-               result.put("x1", String.valueOf(x) + " +i" + String.valueOf(sqrtD));
-               result.put("x2", String.valueOf(x) + " -i" + String.valueOf(sqrtD));
-               result.put("message", "The roots of the equation are complex and different.");
+               String complexRootOne = root + " +i" + sqrtDiscriminant ;
+               String complexRootTwo = root + " -i" + sqrtDiscriminant ;
+               String message="The roots of the equation are complex and different.";
+
+               ResultModel result = new ResultModel(String.valueOf(discriminant),complexRootOne,complexRootTwo,message);
 
                return result;
            }

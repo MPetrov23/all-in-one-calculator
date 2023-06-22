@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Interest</title>
+  <title>Quadratic Equation</title>
   <base href="/">
   <link rel="stylesheet"  type="text/css" href="css/styles.css">
   </base>
@@ -21,22 +21,22 @@
 
   <h1>Quadratic Equation</h1>
 
-  <h1> Enter A,B and C if Ax2+Bx+C=0</h1>
+  <h1> Enter A,B and C if Ax^2+Bx+C=0</h1>
 
 
   <form  th:action="@{/quadraticEquation}" th:object="${calculatorModel}" method="POST">
     <table>
       <tr>
-        <th><label for="a">A- </label></th>
-        <th><input type="text" id="a" name="a" th:field="*{a}"></th>
+        <th><label for="variableA">A- </label></th>
+        <th><input type="text" id="variableA" name="variableA" th:field="*{variableA}"></th>
       </tr>
       <tr>
-        <th> <label for="b">B- </label></th>
-        <th><input type="text" id="b" name="b" th:field="*{b}"></th>
+        <th> <label for="variableB">B- </label></th>
+        <th><input type="text" id="variableB" name="variableB" th:field="*{variableB}"></th>
       </tr>
       <tr>
-        <th><label for="c">C- </label></th>
-        <th><input type="text" id="c" name="c" th:field="*{c}"></th>
+        <th><label for="variableC">C- </label></th>
+        <th><input type="text" id="variableC" name="variableC" th:field="*{variableC}"></th>
       </tr>
       <tr>
         <th></th>
@@ -46,10 +46,11 @@
         </th>
       </tr>
     </table>
+
     <h2><p th:text="${message}"/></h2>
-    <h2><p th:text="${D}"/></h2>
-    <h2><p th:text="${x1}"/></h2>
-    <h2><p th:text="${x2}"/></h2>
+    <h2><p th:text="${Discriminant}"/></h2>
+    <h2><p th:text="${RootOne}"/></h2>
+    <h2><p th:text="${RootTwo}"/></h2>
 
   </form>
 </div>
